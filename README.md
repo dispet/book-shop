@@ -2,6 +2,18 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.0.
 
+## Task N: 1
+
+1.init git repo.
+2.init new project with ng/cli new command.
+
+## Task N: 2(Components)
+
+1.added many components.
+2.used @ViewChild, @Input, @Output, *ngIf, *ngFor,
+ngOnInit, (click), eventemmiter.
+3.add logics of adding to cart, in(de)creasing the emount of orders, deleting orders.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

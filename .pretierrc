@@ -1,0 +1,27 @@
+module.exports = {
+  ...,
+  overrides: [
+    {
+      files: ["*.ts"],
+      parserOptions: {
+        project: [
+          "tsconfig.*?.json",
+          "e2e/tsconfig.json"
+        ],
+        createDefaultProgram: true
+      },
+      extends: [
+        "plugin:@angular-eslint/recommended",
+        // Стайл гайд AirBnB
+	'airbnb-typescript/base',
+	// Настройки для Prettier
+        'prettier/@typescript-eslint',
+        'plugin:prettier/recommended'
+      ],
+      rules: {
+        ...
+      }
+    },
+    ...
+  ]
+}
