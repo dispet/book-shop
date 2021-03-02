@@ -1,0 +1,10 @@
+<div class="cart-item">
+    <div>{{ cartItem.name }}</div>
+    <div class="cart-item__remove-icon" (click)="onRemove(cartItem.id)">
+        <button (click)="onIncr(cartItem.id)">+</button>
+        {{ cartItem.booksInCart }}
+        <button (click)="onDcr(cartItem.id)">-</button>
+        <button (click)="onRemove(cartItem.id)"></button>
+        &#x2715;
+    </div>
+</div>

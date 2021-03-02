@@ -1,3 +1,17 @@
-.example {
-    color: black;
+.books-area {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    padding: 20px;
+    grid-gap: 20px;
+}
+
+.books-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 20px;
 }

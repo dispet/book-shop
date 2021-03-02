@@ -1,8 +1,8 @@
-<div>
-    <app-cart-item
-        *ngFor="let item of cartItems"
-        [cartItem]="item"
-        (removeCartItemEvent)="remove($event)"
-    ></app-cart-item>
-    <div>Total: {{ cartItems.length }}</div>
-</div>
+<app-cart-item
+    *ngFor="let item of cartItems"
+    [cartItem]="item"
+    (increaseBuyCount)="onIncr($event)"
+    (decreaseBuyCount)="onDcr($event)"
+    (deleteBuyBook)="onDel($event)"
+>
+</app-cart-item>

@@ -7,7 +7,7 @@ import {
     ChangeDetectionStrategy,
 } from '@angular/core';
 
-import { BookModel } from '../../models/book.model';
+import { BookModel } from '../../../models/book.model';
 
 @Component({
     selector: 'app-book',
