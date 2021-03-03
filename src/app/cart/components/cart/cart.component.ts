@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { BookModel, IbookToBuy } from '../../models/book.model';
-import { CartService } from './services/cart.service';
+import { BookModel, IbookToBuy } from '../../../models/book.model';
+import { CartService } from '../../services/cart.service';
 
 @Component({
     selector: 'app-cart',

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { BookModel } from '../../../models/book.model';
+import { BookModel } from '../../models/book.model';
 
 const books: BookModel[] = [];
 
