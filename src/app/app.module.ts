@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -8,7 +7,6 @@ import { BookComponent } from './components/books/book/book.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CartItemComponent } from './components/cart/cart-item/cart-item.component';
 import { AboutComponent } from './layout/components/about/about.component';
-import { CoreModule } from './core/core.module';
 
 @NgModule({
     declarations: [
@@ -18,7 +16,7 @@ import { CoreModule } from './core/core.module';
         CartItemComponent,
         AboutComponent,
     ],
-    imports: [BrowserModule, AppRoutingModule, CoreModule],
+    imports: [BrowserModule, AppRoutingModule],
     providers: [],
     bootstrap: [AppComponent],
 })
