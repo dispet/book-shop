@@ -3,9 +3,9 @@
     <app-cart-item
         *ngFor="let item of cartItems"
         [cartItem]="item"
-        (removeBook)="removeBook($event)"
-        (increaseQuantity)="increaseQuantity($event)"
-        (decreaseQuantity)="decreaseQuantity($event)"
+        (removeBook)="onRemoveBook($event)"
+        (increaseQuantity)="onIncreaseQuantity($event)"
+        (decreaseQuantity)="onDecreaseQuantity($event)"
     >
     </app-cart-item>
     <button (click)="onClearCart()">Clear Cart</button>

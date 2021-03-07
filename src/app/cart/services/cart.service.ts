@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { IBook } from '../../models/book.model';
-import { IBookToBuy } from '../../models/cart.model';
+import { IBook } from '../../shared/models/book.model';
+import { IBookToBuy } from '../../shared/models/cart.model';
 
 @Injectable({
     providedIn: 'root',
@@ -81,6 +81,5 @@ export class CartService {
             this.totalSum += cartItem.price * cartItem.booksInCart;
             this.totalQuantity += cartItem.booksInCart;
         });
-        console.log('updateCartData', this.totalSum);
     }
 }

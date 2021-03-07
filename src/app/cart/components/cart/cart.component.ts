@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { IBookToBuy } from '../../../models/cart.model';
+import { IBookToBuy } from '../../../shared/models/cart.model';
 import { CartService } from '../../services/cart.service';
 
 @Component({
@@ -16,15 +16,15 @@ export class CartComponent implements OnInit {
         this.cartItems = this.cartService.getCart();
     }
 
-    removeBook(index) {
+    onRemoveBook(index) {
         return this.cartService.removeBook(index);
     }
 
-    increaseQuantity(index) {
+    onIncreaseQuantity(index) {
         return this.cartService.increaseQuantity(index);
     }
 
-    decreaseQuantity(index) {
+    onDecreaseQuantity(index) {
         return this.cartService.decreaseQuantity(index);
     }
 

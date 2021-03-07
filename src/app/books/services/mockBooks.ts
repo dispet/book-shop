@@ -1,7 +1,7 @@
-import { IBook } from '../../models/book.model';
+import { IBook } from '../../shared/models/book.model';
 import { Category } from '../../core/cosnstants';
 
-export const mockBooks: IBook[] = [
+export const mockBooks: Array<IBook> = [
     {
         id: 1,
         name: 'The Hobbit#1',

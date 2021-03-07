@@ -1,9 +1,21 @@
-<div [ngClass]="{ book: true }">
-    <h3>{{ book.name }}</h3>
-    <div>About: {{ book.description }}</div>
-    <div>Category: {{ book.category }}</div>
-    <div>Price: {{ book.price }}</div>
-    <div>Create date: {{ book?.createDate | date }}</div>
-    <div>IsAvailable: {{ book.isAvailable }}</div>
-    <button *ngIf="book.isAvailable" (click)="onBuy(book)">Buy</button>
-</div>
+<mat-card [ngClass]="{ book: true }">
+    <mat-card-header>
+        <mat-card-title>{{ book.name }}</mat-card-title>
+        <mat-card-subtitle>Category: {{ book.category }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <div>About: {{ book.description }}</div>
+        <div>Price: {{ book.price }}</div>
+        <div>Create date: {{ book?.createDate | date }}</div>
+        <div>IsAvailable: {{ book.isAvailable }}</div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button
+            mat-raised-button
+            [disabled]="!book.isAvailable"
+            (click)="onBuy(book)"
+        >
+            Buy
+        </button>
+    </mat-card-actions>
+</mat-card>
