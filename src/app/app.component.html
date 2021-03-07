@@ -1,19 +1,5 @@
 <h1 class="flex-center" #appTitle></h1>
 <div class="main">
-    <section class="books-layout">
-        <app-book
-            class="books-area"
-            *ngFor="let book of books"
-            [book]="book"
-            (buyItemEvent)="onBuyItem($event)"
-        >
-        </app-book>
-    </section>
-    <app-cart
-        [cartItems]="booksToBuy"
-        (increaseBuyCount)="onIncreaseBuyCount($event)"
-        (decreaseBuyCount)="onDecreaseBuyCount($event)"
-        (deleteBuyBook)="onDeleteBuyBook($event)"
-    >
-    </app-cart>
+    <app-book-list></app-book-list>
+    <app-cart></app-cart>
 </div>
