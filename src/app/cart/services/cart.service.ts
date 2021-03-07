@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { IBook } from '../../models/book.model';
 import { IBookToBuy } from '../../models/cart.model';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+})
 export class CartService {
     cartProduct: Array<IBookToBuy> = [];
     totalQuantity: number;
@@ -19,7 +21,7 @@ export class CartService {
         });
     }
 
-    addBook(book: IBook): void {
+    addBook(book: IBook) {
         const { name, price, id } = book;
         const existedBookIdx = this.findBookById(id);
         if (existedBookIdx !== -1) {
@@ -42,6 +44,7 @@ export class CartService {
     removeBook(id: number): void {
         const existedBookIdx = this.findBookById(id);
         this.cartProduct.splice(existedBookIdx, 1);
+        this.updateCartData();
     }
 
     increaseQuantity(id: number): void {
@@ -55,23 +58,29 @@ export class CartService {
 
     decreaseQuantity(id: number): void {
         const existedBookIdx = this.findBookById(id);
-        this.cartProduct[existedBookIdx] = {
-            ...this.cartProduct[existedBookIdx],
-            booksInCart: this.cartProduct[existedBookIdx].booksInCart - 1,
-        };
+        if (this.cartProduct[existedBookIdx].booksInCart) {
+            this.cartProduct[existedBookIdx] = {
+                ...this.cartProduct[existedBookIdx],
+                booksInCart: this.cartProduct[existedBookIdx].booksInCart - 1,
+            };
+        }
         this.updateCartData();
         console.log('removeBook', id);
     }
 
     removeAllBooks() {
-        this.cartProduct = [];
+        return (this.cartProduct = this.cartProduct.filter(
+            (it: IBookToBuy) => it.id === 0
+        ));
     }
 
     updateCartData() {
-        this.totalSum = this.cartProduct.reduce(
-            (acc, cartItem) => acc + cartItem.price,
-            0
-        );
-        this.totalQuantity = this.cartProduct.length;
+        this.totalSum = 0;
+        this.totalQuantity = 0;
+        this.cartProduct.forEach((cartItem) => {
+            this.totalSum += cartItem.price * cartItem.booksInCart;
+            this.totalQuantity += cartItem.booksInCart;
+        });
+        console.log('updateCartData', this.totalSum);
     }
 }
