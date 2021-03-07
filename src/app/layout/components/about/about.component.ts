@@ -1,9 +1,11 @@
 import { Component, Optional, Inject, OnInit } from '@angular/core';
 
-import { generatorFactory } from 'src/app/core/services/generator.service.provider';
-import { GeneratorService } from 'src/app/core/services/generator.service';
-import { ConfigOptionsService } from 'src/app/core/services/config-options.service';
-import { LocalStorageService } from 'src/app/core/services/local-storage.service';
+import {
+    generatorFactory,
+    GeneratorService,
+    ConfigOptionsService,
+    LocalStorageService,
+} from '../../../core/services';
 import {
     ConstantService,
     AppConfig,

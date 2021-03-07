@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { BookModel, IbookToBuy } from '../../../models/book.model';
 
-@Injectable({
-    providedIn: 'root',
-})
+import { IBook } from '../../models/book.model';
+import { IBookToBuy } from '../../models/cart.model';
+
+@Injectable()
 export class CartService {
-    cartProduct: IbookToBuy[] = [];
+    cartProduct: Array<IBookToBuy> = [];
     totalQuantity: number;
     totalSum: number;
 
@@ -19,7 +19,7 @@ export class CartService {
         });
     }
 
-    addBook(book: BookModel) {
+    addBook(book: IBook): void {
         const { name, price, id } = book;
         const existedBookIdx = this.findBookById(id);
         if (existedBookIdx !== -1) {
@@ -28,7 +28,7 @@ export class CartService {
                 booksInCart: this.cartProduct[existedBookIdx].booksInCart + 1,
             };
         } else {
-            const bookToBuy: IbookToBuy = {
+            const bookToBuy: IBookToBuy = {
                 name,
                 id,
                 price,

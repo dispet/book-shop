@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 
 import { IBook } from './models/book.model';
-import { Category } from './core/cosnstants/category';
+import { Category } from './core/cosnstants';
 import { IBookToBuy } from './models/cart.model';
 
 @Component({

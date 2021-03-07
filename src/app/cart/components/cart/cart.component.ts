@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { BookModel, IbookToBuy } from '../../models/book.model';
-import { CartService } from './services/cart.service';
+
+import { IBookToBuy } from '../../../models/cart.model';
 
 @Component({
     selector: 'app-cart',
@@ -8,22 +8,24 @@ import { CartService } from './services/cart.service';
     styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent implements OnInit {
-    @Input() cartItems: IbookToBuy[];
+    @Input() cartItems: IBookToBuy[];
     @Output() increaseBuyCount = new EventEmitter<number>();
     @Output() decreaseBuyCount = new EventEmitter<number>();
     @Output() deleteBuyBook = new EventEmitter<number>();
+
     constructor() {
         this.cartItems = [];
     }
 
-    onIncr(id: number) {
+    onIncreaseBuyCount(id: number): void {
         this.increaseBuyCount.emit(id);
     }
-    onDcr(id: number) {
+
+    onDecreaseBuyCount(id: number): void {
         this.decreaseBuyCount.emit(id);
     }
 
-    onDel(id: number) {
+    onDeleteBuyBook(id: number): void {
         this.deleteBuyBook.emit(id);
     }
 
