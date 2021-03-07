@@ -6,13 +6,9 @@ interface Preferences {
     email: string;
 }
 
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable()
 export class ConfigOptionsService {
     private preferences: Preferences | null = null;
-
-    constructor() {}
 
     setPreferences(preferences: Preferences): void {
         this.preferences = { ...this.preferences, ...preferences };

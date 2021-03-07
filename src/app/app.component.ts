@@ -5,7 +5,10 @@ import {
     OnInit,
     ViewChild,
 } from '@angular/core';
-import { BookModel, Category, IbookToBuy } from './models/book.model';
+
+import { IBook } from './models/book.model';
+import { Category } from './core/cosnstants/category';
+import { IBookToBuy } from './models/cart.model';
 
 @Component({
     selector: 'app-root',
@@ -15,7 +18,7 @@ import { BookModel, Category, IbookToBuy } from './models/book.model';
 export class AppComponent implements AfterViewInit, OnInit {
     @ViewChild('appTitle', { static: true }) title!: ElementRef;
 
-    book: BookModel = {
+    book: IBook = {
         id: Date.now(),
         name: 'The Hobbit#1',
         description: "The Hobbit is set within Tolkien's fictional universe",
@@ -25,7 +28,7 @@ export class AppComponent implements AfterViewInit, OnInit {
         isAvailable: true,
     };
 
-    books: BookModel[] = [
+    books: IBook[] = [
         {
             id: 1,
             name: 'The Hobbit#1',
@@ -57,9 +60,9 @@ export class AppComponent implements AfterViewInit, OnInit {
             isAvailable: true,
         },
     ];
-    booksToBuy: IbookToBuy[] = [];
+    booksToBuy: Array<IBookToBuy> = [];
 
-    ngOnInit() {
+    ngOnInit(): void {
         console.log('init');
     }
 
@@ -67,7 +70,7 @@ export class AppComponent implements AfterViewInit, OnInit {
         this.title.nativeElement.textContent = 'Book Shop';
     }
 
-    buyItem(book: BookModel) {
+    onBuyItem(book: IBook): void {
         const { name, id } = book;
         const existedBookIdx = this.booksToBuy.findIndex((item) => {
             return item.id === id;
@@ -78,7 +81,7 @@ export class AppComponent implements AfterViewInit, OnInit {
                 booksInCart: this.booksToBuy[existedBookIdx].booksInCart + 1,
             };
         } else {
-            const bookToBuy: IbookToBuy = {
+            const bookToBuy: IBookToBuy = {
                 name,
                 price: 0,
                 id,
@@ -88,7 +91,7 @@ export class AppComponent implements AfterViewInit, OnInit {
         }
     }
 
-    increaseBuyCount(id: number): void {
+    onIncreaseBuyCount(id: number): void {
         this.booksToBuy = this.booksToBuy.map((book) => {
             if (book.id === id) {
                 return {
@@ -100,7 +103,7 @@ export class AppComponent implements AfterViewInit, OnInit {
         });
     }
 
-    decreaseBuyCount(id: number): void {
+    onDecreaseBuyCount(id: number): void {
         this.booksToBuy = this.booksToBuy.map((book) => {
             if (book.id === id) {
                 return {
@@ -112,7 +115,7 @@ export class AppComponent implements AfterViewInit, OnInit {
         });
     }
 
-    deleteBuyBook(id: number): void {
+    onDeleteBuyBook(id: number): void {
         this.booksToBuy = this.booksToBuy.filter((book) => book.id !== id);
     }
 }

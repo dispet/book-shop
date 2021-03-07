@@ -1,23 +1,11 @@
-export enum Category {
-    Crime,
-    Detective,
-    Science,
-    Fantasy,
-}
+import { Category } from '../core/cosnstants/category';
 
-export interface BookModel {
+export interface IBook {
     name: string;
     description: string;
     price: number;
     category: Category;
     createDate: number;
     isAvailable: boolean;
-    id: number;
-}
-
-export interface IbookToBuy {
-    name: string;
-    price: number;
-    booksInCart: number;
     id: number;
 }

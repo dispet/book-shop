@@ -5,15 +5,15 @@
             class="books-area"
             *ngFor="let book of books"
             [book]="book"
-            (buyItemEvent)="buyItem($event)"
+            (buyItemEvent)="onBuyItem($event)"
         >
         </app-book>
     </section>
     <app-cart
         [cartItems]="booksToBuy"
-        (increaseBuyCount)="increaseBuyCount($event)"
-        (decreaseBuyCount)="decreaseBuyCount($event)"
-        (deleteBuyBook)="deleteBuyBook($event)"
+        (increaseBuyCount)="onIncreaseBuyCount($event)"
+        (decreaseBuyCount)="onDecreaseBuyCount($event)"
+        (deleteBuyBook)="onDeleteBuyBook($event)"
     >
     </app-cart>
 </div>

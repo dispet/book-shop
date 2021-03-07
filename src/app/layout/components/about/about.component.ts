@@ -1,5 +1,6 @@
 import { Component, Optional, Inject, OnInit } from '@angular/core';
-import { GeneratorFactory } from 'src/app/core/services/generator.service.provider';
+
+import { generatorFactory } from 'src/app/core/services/generator.service.provider';
 import { GeneratorService } from 'src/app/core/services/generator.service';
 import { ConfigOptionsService } from 'src/app/core/services/config-options.service';
 import { LocalStorageService } from 'src/app/core/services/local-storage.service';
@@ -20,12 +21,12 @@ export class AboutComponent implements OnInit {
 
     constructor(
         private config: ConfigOptionsService,
-        @Optional() @Inject(GeneratorFactory) generator: GeneratorService,
+        @Optional() @Inject(generatorFactory) generator: GeneratorService,
         @Optional() @Inject(LocalStorageService) storage: LocalStorageService,
         @Optional() @Inject(ConstantService) constant: AppConfig
     ) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         console.log(
             this.generator?.generate(16),
             this.config?.getPreferences(),

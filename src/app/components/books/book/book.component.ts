@@ -7,7 +7,7 @@ import {
     ChangeDetectionStrategy,
 } from '@angular/core';
 
-import { BookModel } from '../../../models/book.model';
+import { IBook } from '../../../models/book.model';
 
 @Component({
     selector: 'app-book',
@@ -16,12 +16,10 @@ import { BookModel } from '../../../models/book.model';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BookComponent implements OnInit {
-    @Input() book: BookModel | null = null;
-    @Output() buyItemEvent = new EventEmitter<BookModel>();
+    @Input() book: IBook | null = null;
+    @Output() buyItemEvent = new EventEmitter<IBook>();
 
-    constructor() {}
-
-    onBuy(book: BookModel): void {
+    onBuy(book: IBook): void {
         this.buyItemEvent.emit(book);
     }
 

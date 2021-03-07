@@ -1,8 +1,8 @@
 <app-cart-item
     *ngFor="let item of cartItems"
     [cartItem]="item"
-    (increaseBuyCount)="onIncr($event)"
-    (decreaseBuyCount)="onDcr($event)"
-    (deleteBuyBook)="onDel($event)"
+    (increaseBuyCount)="onIncreaseBuyCount($event)"
+    (decreaseBuyCount)="onDecreaseBuyCount($event)"
+    (deleteBuyBook)="onDeleteBuyBook($event)"
 >
 </app-cart-item>

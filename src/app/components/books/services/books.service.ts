@@ -1,16 +1,12 @@
 import { Injectable } from '@angular/core';
 
-import { BookModel } from '../../../models/book.model';
+import { IBook } from '../../../models/book.model';
 
-const books: BookModel[] = [];
+const books: Array<IBook> = [];
 
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable()
 export class BooksService {
-    constructor() {}
-
-    getBooks(): BookModel[] {
+    getBooks(): IBook[] {
         return books;
     }
 }
