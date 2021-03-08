@@ -1,7 +1,36 @@
 <h2>Cart</h2>
 <div *ngIf="cartItems.length > 0; else empty">
+    <form class="row">
+        <label
+            >Sort cart items
+            <select [(ngModel)]="sortParam" name="sortParam">
+                <option value="name">Name</option>
+                <option value="price">Price</option>
+                <option value="booksInCart">Total</option>
+            </select>
+        </label>
+        <label>
+            <input
+                type="radio"
+                name="switchRadio"
+                value="asc"
+                [(ngModel)]="sortFlag"
+            />
+            asc
+        </label>
+        <label>
+            <input
+                type="radio"
+                name="switchRadio"
+                value="desc"
+                [(ngModel)]="sortFlag"
+            />
+            desc
+        </label>
+    </form>
+    <hr />
     <app-cart-item
-        *ngFor="let item of cartItems"
+        *ngFor="let item of cartItems | orderBy: sortParam:sortFlag"
         [cartItem]="item"
         (removeBook)="onRemoveBook($event)"
         (increaseQuantity)="onIncreaseQuantity($event)"

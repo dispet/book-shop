@@ -1,6 +1,7 @@
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+
 import { CartService } from '../../../cart/services/cart.service';
 import { BooksService } from '../../services/books.service';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { IBook } from '../../../shared/models/book.model';
 
 @Component({
@@ -22,7 +23,7 @@ export class BookListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.books = this.booksService.getBooks();
+        this.booksService.getBooks().subscribe((books) => (this.books = books));
     }
 
     ngOnChange(): void {
