@@ -1,3 +1,19 @@
-<h1 #appTitle></h1>
-<app-book [book]="book" (buyItemEvent)="buyItem($event)"></app-book>
-<app-cart [cartItems]="cartItems" (removeItemEvent)="remove($event)"></app-cart>
+<h1 class="flex-center" #appTitle></h1>
+<div class="main">
+    <section class="books-layout">
+        <app-book
+            class="books-area"
+            *ngFor="let book of books"
+            [book]="book"
+            (buyItemEvent)="onBuyItem($event)"
+        >
+        </app-book>
+    </section>
+    <app-cart
+        [cartItems]="booksToBuy"
+        (increaseBuyCount)="onIncreaseBuyCount($event)"
+        (decreaseBuyCount)="onDecreaseBuyCount($event)"
+        (deleteBuyBook)="onDeleteBuyBook($event)"
+    >
+    </app-cart>
+</div>

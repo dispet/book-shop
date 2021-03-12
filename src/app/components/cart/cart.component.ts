@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { BookModel } from '../../models/book.model';
+
+import { IBookToBuy } from '../../models/cart.model';
 
 @Component({
     selector: 'app-cart',
@@ -7,14 +8,25 @@ import { BookModel } from '../../models/book.model';
     styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent implements OnInit {
-    @Input() cartItems!: BookModel[];
-    @Output() removeItemEvent = new EventEmitter<number>();
+    @Input() cartItems: IBookToBuy[];
+    @Output() increaseBuyCount = new EventEmitter<number>();
+    @Output() decreaseBuyCount = new EventEmitter<number>();
+    @Output() deleteBuyBook = new EventEmitter<number>();
 
-    constructor() {}
+    constructor() {
+        this.cartItems = [];
+    }
 
-    // tslint:disable-next-line:typedef
-    remove(name) {
-        this.removeItemEvent.emit(name);
+    onIncreaseBuyCount(id: number): void {
+        this.increaseBuyCount.emit(id);
+    }
+
+    onDecreaseBuyCount(id: number): void {
+        this.decreaseBuyCount.emit(id);
+    }
+
+    onDeleteBuyBook(id: number): void {
+        this.deleteBuyBook.emit(id);
     }
 
     ngOnInit(): void {

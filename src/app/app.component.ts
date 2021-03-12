@@ -5,7 +5,10 @@ import {
     OnInit,
     ViewChild,
 } from '@angular/core';
-import { BookModel, Category } from './models/book.model';
+
+import { IBook } from './models/book.model';
+import { Category } from './core/cosnstants/category';
+import { IBookToBuy } from './models/cart.model';
 
 @Component({
     selector: 'app-root',
@@ -13,38 +16,106 @@ import { BookModel, Category } from './models/book.model';
     styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements AfterViewInit, OnInit {
-    // title = 'bookShop';
     @ViewChild('appTitle', { static: true }) title!: ElementRef;
 
-    book: BookModel = {
-        name: 'The Hobbit',
-        description:
-            "The Hobbit is set within Tolkien's fictional universe and follows the quest of home-loving Bilbo Baggins, the titular hobbit, to win a share of the treasure guarded by Smaug the dragon. Bilbo's journey takes him from light-hearted, rural surroundings into more sinister territory",
+    book: IBook = {
+        id: Date.now(),
+        name: 'The Hobbit#1',
+        description: "The Hobbit is set within Tolkien's fictional universe",
         price: 23.99,
         category: Category.Fantasy,
         createDate: Date.now(),
         isAvailable: true,
     };
 
-    cartItems!: BookModel[];
+    books: IBook[] = [
+        {
+            id: 1,
+            name: 'The Hobbit#1',
+            description:
+                "The Hobbit is set within Tolkien's fictional universe",
+            price: 23.99,
+            category: Category.Fantasy,
+            createDate: Date.now(),
+            isAvailable: true,
+        },
+        {
+            id: 2,
+            name: 'The Hobbit#2',
+            description:
+                "The Hobbit is set within Tolkien's fictional universe",
+            price: 23.99,
+            category: Category.Fantasy,
+            createDate: Date.now(),
+            isAvailable: false,
+        },
+        {
+            id: 3,
+            name: 'The Hobbit#3',
+            description:
+                "The Hobbit is set within Tolkien's fictional universe",
+            price: 23.99,
+            category: Category.Fantasy,
+            createDate: Date.now(),
+            isAvailable: true,
+        },
+    ];
+    booksToBuy: Array<IBookToBuy> = [];
 
-    // tslint:disable-next-line:typedef
-    ngOnInit() {
-        this.cartItems = [];
-    }
-
-    buyItem(book: BookModel): void {
-        this.cartItems.push(book);
-    }
-
-    // tslint:disable-next-line:typedef
-    remove(name) {
-        this.cartItems = this.cartItems.filter(
-            (book: BookModel) => name !== book.name
-        );
+    ngOnInit(): void {
+        console.log('init');
     }
 
     ngAfterViewInit(): void {
         this.title.nativeElement.textContent = 'Book Shop';
+    }
+
+    onBuyItem(book: IBook): void {
+        const { name, id } = book;
+        const existedBookIdx = this.booksToBuy.findIndex((item) => {
+            return item.id === id;
+        });
+        if (existedBookIdx !== -1) {
+            this.booksToBuy[existedBookIdx] = {
+                ...this.booksToBuy[existedBookIdx],
+                booksInCart: this.booksToBuy[existedBookIdx].booksInCart + 1,
+            };
+        } else {
+            const bookToBuy: IBookToBuy = {
+                name,
+                price: 0,
+                id,
+                booksInCart: 1,
+            };
+            this.booksToBuy = [...this.booksToBuy, bookToBuy];
+        }
+    }
+
+    onIncreaseBuyCount(id: number): void {
+        this.booksToBuy = this.booksToBuy.map((book) => {
+            if (book.id === id) {
+                return {
+                    ...book,
+                    booksInCart: book.booksInCart + 1,
+                };
+            }
+            return book;
+        });
+    }
+
+    onDecreaseBuyCount(id: number): void {
+        this.booksToBuy = this.booksToBuy.map((book) => {
+            if (book.id === id) {
+                return {
+                    ...book,
+                    booksInCart: book.booksInCart - 1,
+                };
+            }
+            return book;
+        });
+    }
+
+    onDeleteBuyBook(id: number): void {
+        this.booksToBuy = this.booksToBuy.filter((book) => book.id !== id);
     }
 }
