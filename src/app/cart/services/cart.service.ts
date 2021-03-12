@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { IBook } from '../../../models/book.model';
-import { IBookToBuy } from '../../../models/cart.model';
+import { IBook } from '../../models/book.model';
+import { IBookToBuy } from '../../models/cart.model';
 
 @Injectable()
 export class CartService {
@@ -19,7 +19,7 @@ export class CartService {
         });
     }
 
-    addBook(book: IBook) {
+    addBook(book: IBook): void {
         const { name, price, id } = book;
         const existedBookIdx = this.findBookById(id);
         if (existedBookIdx !== -1) {
