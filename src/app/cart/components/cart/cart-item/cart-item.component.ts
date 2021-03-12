@@ -7,7 +7,7 @@ import {
     ChangeDetectionStrategy,
 } from '@angular/core';
 
-import { IBookToBuy } from '../../../../shared/models/cart.model';
+import { IBookToBuy } from '../../../../shared/models';
 
 @Component({
     selector: 'app-cart-item',

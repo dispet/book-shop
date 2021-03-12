@@ -1,4 +1,4 @@
-import { IBook } from '../../shared/models/book.model';
+import { IBook } from '../../shared/models';
 import { Category } from '../../core/cosnstants';
 
 export const mockBooks: Array<IBook> = [

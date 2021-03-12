@@ -1,23 +1,26 @@
 import { NgModule } from '@angular/core';
 
 import { RouterModule, Routes } from '@angular/router';
-import { AdminGuard } from './shared/admin.guard';
 import { CartComponent } from './cart/components/cart/cart.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import { HomeComponent } from './shared/components/home/home.component';
+import { BookListComponent } from './books/components/book-list/book-list.component';
+import { OrderComponent } from './orders/components/order/order.component';
+import { AdminGuard } from './admin/guards/admin.guard';
+import { BookDetailComponent } from './books/components/book-list/book/book-detail/book-detail.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: 'books', pathMatch: 'full' },
-    {
-        path: 'books',
-        loadChildren: () =>
-            import('./books/books.module').then((m) => m.BooksModule),
-    },
-    { path: 'cart', component: CartComponent, pathMatch: 'full' },
-    { path: 'order', component: CartComponent, pathMatch: 'full' },
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: 'home', component: HomeComponent },
+    { path: 'product-list', component: BookListComponent },
+    { path: 'product/:productID', component: BookDetailComponent },
+    { path: 'cart', component: CartComponent },
+    { path: 'order', component: OrderComponent },
     {
         path: 'admin',
-        loadChildren: './admin/admin.module#AdminModule',
-        canActivate: [AdminGuard],
+        loadChildren: () =>
+            import('./admin/admin.module').then((m) => m.AdminModule),
+        canLoad: [AdminGuard],
     },
     { path: '**', component: NotFoundComponent },
 ];

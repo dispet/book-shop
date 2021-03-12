@@ -6,6 +6,8 @@ import { ActiveItemDirective } from './directives/active-item.directive';
 import { ZoomFontDirective } from './directives/zoom-font.directive';
 import { OrderByPipe } from './pipes/order-by.pipe';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { HeaderComponent } from './components/header/header.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
     declarations: [
@@ -13,8 +15,10 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
         ZoomFontDirective,
         OrderByPipe,
         NotFoundComponent,
+        HeaderComponent,
+        HomeComponent,
     ],
-    imports: [CommonModule],
+    imports: [CommonModule, AngularMaterialModule],
     exports: [
         AngularMaterialModule,
         CommonModule,
@@ -22,6 +26,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
         ActiveItemDirective,
         ZoomFontDirective,
         OrderByPipe,
+        HeaderComponent,
+        HomeComponent,
     ],
 })
 export class SharedModule {}
