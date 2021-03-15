@@ -7,7 +7,7 @@ import {
     ChangeDetectionStrategy,
 } from '@angular/core';
 
-import { IBook } from '../../../../shared/models/book.model';
+import { IBook } from '../../../../shared/models';
 
 @Component({
     selector: 'app-book',
