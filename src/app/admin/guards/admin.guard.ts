@@ -1,21 +1,25 @@
 import { Injectable } from '@angular/core';
-import { CanLoad, UrlTree, Route } from '@angular/router';
+import {
+    CanActivate,
+    ActivatedRouteSnapshot,
+    RouterStateSnapshot,
+    UrlTree,
+} from '@angular/router';
 import { Observable } from 'rxjs';
-import { LoginService } from '../../core/services/login.service';
 
 @Injectable({
     providedIn: 'root',
 })
-export class AdminGuard implements CanLoad {
-    constructor(private loginService: LoginService) {}
-    canLoad(
-        route: Route
+export class AdminGuard implements CanActivate {
+    canActivate(
+        route: ActivatedRouteSnapshot,
+        state: RouterStateSnapshot
     ):
         | Observable<boolean | UrlTree>
         | Promise<boolean | UrlTree>
         | boolean
         | UrlTree {
-        console.log(this.loginService.getIsLogin());
-        return this.loginService.getIsLogin();
+        console.log('AuthGuard', 'call');
+        return confirm('Are you sure, you want to switch?');
     }
 }

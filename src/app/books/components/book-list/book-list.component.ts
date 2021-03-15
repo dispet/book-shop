@@ -1,5 +1,10 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-
+import {
+    ChangeDetectionStrategy,
+    Component,
+    OnDestroy,
+    OnInit,
+} from '@angular/core';
+import { Subscription } from 'rxjs';
 import { CartService } from '../../../cart/services/cart.service';
 import { BooksService } from '../../services/books.service';
 import { IBook } from '../../../shared/models';
@@ -10,9 +15,9 @@ import { IBook } from '../../../shared/models';
     styleUrls: ['./book-list.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BookListComponent implements OnInit {
+export class BookListComponent implements OnInit, OnDestroy {
     books: IBook[];
-
+    subscription!: Subscription;
     constructor(
         private booksService: BooksService,
         private cartService: CartService
@@ -23,7 +28,13 @@ export class BookListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.booksService.getBooks().subscribe((books) => (this.books = books));
+        this.subscription = this.booksService
+            .getBooks()
+            .subscribe((books) => (this.books = books));
+    }
+
+    ngOnDestroy(): void {
+        this.subscription.unsubscribe();
     }
 
     ngOnChange(): void {

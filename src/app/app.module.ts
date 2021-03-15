@@ -15,12 +15,12 @@ import { OrdersModule } from './orders/orders.module';
     declarations: [AppComponent, AboutComponent],
     imports: [
         BrowserModule,
-        AppRoutingModule,
         CoreModule,
         BooksModule,
         CartModule,
         SharedModule,
         OrdersModule,
+        AppRoutingModule,
     ],
     providers: [],
     bootstrap: [AppComponent],
