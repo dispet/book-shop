@@ -10,6 +10,8 @@ import { CartService } from '../../services/cart.service';
 })
 export class CartComponent implements OnInit {
     cartItems: IBookToBuy[];
+    sortFlag: string;
+    sortParam: string;
     constructor(private cartService: CartService) {}
 
     ngOnInit(): void {

@@ -1,8 +1,14 @@
-<section class="books-layout">
-    <app-book
-        *ngFor="let book of books"
-        [book]="book"
-        (buyItemEvent)="onBuy(book)"
-    >
-    </app-book>
-</section>
+<h2>Books</h2>
+<div *ngIf="books; else empty" class="row">
+    <section class="books-layout">
+        <app-book
+            *ngFor="let book of books"
+            [book]="book"
+            (buyItemEvent)="onBuy(book)"
+        >
+        </app-book>
+    </section>
+</div>
+<ng-template #empty>
+    <h5>No books</h5>
+</ng-template>
