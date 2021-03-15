@@ -1,9 +1,0 @@
-<div [ngClass]="{ book: true }">
-    <h3>{{ book.name }}</h3>
-    <div>About: {{ book.description }}</div>
-    <div>Category: {{ book.category }}</div>
-    <div>Price: {{ book.price }}</div>
-    <div>Create date: {{ book?.createDate | date }}</div>
-    <div>IsAvailable: {{ book.isAvailable }}</div>
-    <button *ngIf="book.isAvailable" (click)="onBuy(book)">Buy</button>
-</div>

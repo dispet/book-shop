@@ -1,8 +1,18 @@
-<app-cart-item
-    *ngFor="let item of cartItems"
-    [cartItem]="item"
-    (increaseBuyCount)="onIncreaseBuyCount($event)"
-    (decreaseBuyCount)="onDecreaseBuyCount($event)"
-    (deleteBuyBook)="onDeleteBuyBook($event)"
->
-</app-cart-item>
+<h2>Cart</h2>
+<div *ngIf="cartItems.length > 0; else empty">
+    <app-cart-item
+        *ngFor="let item of cartItems"
+        [cartItem]="item"
+        (removeBook)="onRemoveBook($event)"
+        (increaseQuantity)="onIncreaseQuantity($event)"
+        (decreaseQuantity)="onDecreaseQuantity($event)"
+    >
+    </app-cart-item>
+    <button (click)="onClearCart()">Clear Cart</button>
+    <hr />
+    Total price: {{ cartService.totalSum }} / Total books:
+    {{ cartService.totalQuantity }}
+</div>
+<ng-template #empty>
+    <h5>Cart is empty</h5>
+</ng-template>

@@ -1,6 +1,7 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import { IBookToBuy } from '../../../models/cart.model';
+import { IBookToBuy } from '../../../shared/models/cart.model';
+import { CartService } from '../../services/cart.service';
 
 @Component({
     selector: 'app-cart',
@@ -8,28 +9,27 @@ import { IBookToBuy } from '../../../models/cart.model';
     styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent implements OnInit {
-    @Input() cartItems: IBookToBuy[];
-    @Output() increaseBuyCount = new EventEmitter<number>();
-    @Output() decreaseBuyCount = new EventEmitter<number>();
-    @Output() deleteBuyBook = new EventEmitter<number>();
-
-    constructor() {
-        this.cartItems = [];
-    }
-
-    onIncreaseBuyCount(id: number): void {
-        this.increaseBuyCount.emit(id);
-    }
-
-    onDecreaseBuyCount(id: number): void {
-        this.decreaseBuyCount.emit(id);
-    }
-
-    onDeleteBuyBook(id: number): void {
-        this.deleteBuyBook.emit(id);
-    }
+    cartItems: IBookToBuy[];
+    constructor(private cartService: CartService) {}
 
     ngOnInit(): void {
-        console.log('init');
+        this.cartItems = this.cartService.getCart();
+    }
+
+    onRemoveBook(index) {
+        return this.cartService.removeBook(index);
+    }
+
+    onIncreaseQuantity(index) {
+        return this.cartService.increaseQuantity(index);
+    }
+
+    onDecreaseQuantity(index) {
+        return this.cartService.decreaseQuantity(index);
+    }
+
+    onClearCart() {
+        this.cartService.removeAllBooks();
+        this.cartItems = this.cartService.getCart();
     }
 }
