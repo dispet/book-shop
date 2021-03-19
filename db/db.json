@@ -1,0 +1,32 @@
+{
+    "books": [
+        {
+            "id": 1,
+            "name": "The Hobbit#1",
+            "description": "The Hobbit is set within Tolkien's fictional universe",
+            "price": 23,
+            "category": "Category.Fantasy",
+            "createDate": 1000000000000,
+            "isAvailable": true
+        },
+        {
+            "id": 2,
+            "name": "The Hobbit#2",
+            "description": "The Hobbit is set within Tolkien's fictional universe",
+            "price": 24,
+            "category": "Category.Fantasy",
+            "createDate": 1500000000000,
+            "isAvailable": false
+        },
+        {
+            "id": 3,
+            "name": "The Hobbit#3",
+            "description": "The Hobbit is set within Tolkien's fictional universe",
+            "price": 25,
+            "category": "Category.Fantasy",
+            "createDate": 1550000000000,
+            "isAvailable": true
+        }
+    ],
+    "cartItems": []
+}

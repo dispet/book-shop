@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "scripts": {
         "ng": "ng",
-        "start": "ng lint && ng serve -o",
+        "start": "concurrently --kill-others \"ng lint && ng serve -o\" \"json-server --port 3001 --no-cors=false --watch db\\db.json\"",
         "build": "ng build",
         "test": "ng test",
         "lint": "ng lint",
@@ -49,6 +49,7 @@
         "eslint-plugin-jsdoc": "30.7.6",
         "eslint-plugin-prefer-arrow": "1.2.2",
         "eslint-plugin-prettier": "^3.3.1",
+        "concurrently": "^6.0.0",
         "husky": "^5.1.1",
         "jasmine-core": "~3.6.0",
         "jasmine-spec-reporter": "~5.0.0",

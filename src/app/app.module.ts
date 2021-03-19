@@ -10,11 +10,14 @@ import { AboutComponent } from './layout/components/about/about.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { OrdersModule } from './orders/orders.module';
+import { httpInterceptorProviders } from './core/interceptors';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [AppComponent, AboutComponent],
     imports: [
         BrowserModule,
+        HttpClientModule,
         CoreModule,
         BooksModule,
         CartModule,
@@ -22,7 +25,7 @@ import { OrdersModule } from './orders/orders.module';
         OrdersModule,
         AppRoutingModule,
     ],
-    providers: [],
+    providers: [httpInterceptorProviders],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -4,7 +4,7 @@ import {
     OnDestroy,
     OnInit,
 } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { CartService } from '../../../cart/services/cart.service';
 import { BooksService } from '../../services/books.service';
 import { IBook } from '../../../shared/models';
@@ -13,11 +13,13 @@ import { IBook } from '../../../shared/models';
     selector: 'app-book-list',
     templateUrl: './book-list.component.html',
     styleUrls: ['./book-list.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BookListComponent implements OnInit, OnDestroy {
     books: IBook[];
     subscription!: Subscription;
+    books$: Observable<IBook[]> = new Observable<IBook[]>();
+
     constructor(
         private booksService: BooksService,
         private cartService: CartService
@@ -27,7 +29,7 @@ export class BookListComponent implements OnInit, OnDestroy {
         this.cartService.addBook(book);
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.subscription = this.booksService
             .getBooks()
             .subscribe((books) => (this.books = books));
