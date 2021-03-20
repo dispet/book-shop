@@ -1,4 +1,4 @@
-import { Category } from '../../core/cosnstants';
+import { Category } from '../../core';
 
 export interface IBook {
     name: string;

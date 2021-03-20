@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from './cart/components/cart/cart.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';

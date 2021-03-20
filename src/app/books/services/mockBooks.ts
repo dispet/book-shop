@@ -1,5 +1,5 @@
 import { IBook } from '../../shared/models';
-import { Category } from '../../core/cosnstants';
+import { Category } from '../../core';
 
 export const mockBooks: Array<IBook> = [
     {

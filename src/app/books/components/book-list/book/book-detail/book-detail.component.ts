@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs';
 import { BooksService } from '../../../../services/books.service';
 import { IBook } from '../../../../../shared/models';
-import { DEFAULT_BOOK } from '../../../../../core/cosnstants';
-import { Subject } from 'rxjs';
+import { DEFAULT_BOOK } from '../../../../../core';
 
 @Component({
     selector: 'app-book-detail',

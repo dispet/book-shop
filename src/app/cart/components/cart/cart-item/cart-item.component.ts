@@ -6,7 +6,6 @@ import {
     EventEmitter,
     ChangeDetectionStrategy,
 } from '@angular/core';
-
 import { IBookToBuy } from '../../../../shared/models';
 
 @Component({
