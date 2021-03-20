@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AppSettings } from './core/services/app-settings.service';
 import { Subscription } from 'rxjs';
+import { AppSettings } from './core';
 
 @Component({
     selector: 'app-root',

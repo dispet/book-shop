@@ -1,9 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    OnDestroy,
-    OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { CartService } from '../../../cart/services/cart.service';
 import { BooksService } from '../../services/books.service';
@@ -13,12 +8,10 @@ import { IBook } from '../../../shared/models';
     selector: 'app-book-list',
     templateUrl: './book-list.component.html',
     styleUrls: ['./book-list.component.scss'],
-    // changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BookListComponent implements OnInit, OnDestroy {
-    books: IBook[];
-    subscription!: Subscription;
-    books$: Observable<IBook[]> = new Observable<IBook[]>();
+export class BookListComponent implements OnInit {
+    books$: Observable<Object>;
 
     constructor(
         private booksService: BooksService,
@@ -30,16 +23,10 @@ export class BookListComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.subscription = this.booksService
-            .getBooks()
-            .subscribe((books) => (this.books = books));
-    }
-
-    ngOnDestroy(): void {
-        this.subscription.unsubscribe();
+        this.books$ = this.booksService.getBooks();
     }
 
     ngOnChange(): void {
-        console.log('ngOnChange', this.books);
+        console.log('ngOnChange', this.books$);
     }
 }

@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http';
+import { of, Observable } from 'rxjs';
 import { IBook } from '../../shared/models';
 import { mockBooks } from './mockBooks';
-import { of, Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { API_URL } from '../../core';
 
 const books: Array<IBook> = mockBooks;
 
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable()
 export class BooksService {
-    booksUrl = 'http://localhost:3001/books';
+    booksUrl = API_URL;
 
     constructor(private http: HttpClient) {}
 

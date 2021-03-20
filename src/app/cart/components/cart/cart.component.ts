@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { IBookToBuy } from '../../../shared/models';
 import { CartService } from '../../services/cart.service';
 

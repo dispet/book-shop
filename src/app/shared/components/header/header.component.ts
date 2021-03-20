@@ -1,8 +1,6 @@
-import { LoginService } from '../../../core/services';
-import { RouteService } from '../../../core/services';
 import { Component, OnInit } from '@angular/core';
+import { LoginService, RouteService, appTabsConfig } from '../../../core';
 import { TabsConfig } from '../../types/tabsConfig.type';
-import { appTabsConfig } from '../../../core/cosnstants';
 
 @Component({
     selector: 'app-header',

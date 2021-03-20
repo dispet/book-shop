@@ -1,8 +1,8 @@
 <h2>Books</h2>
-<div *ngIf="books; else empty" class="row">
+<div *ngIf="books$; else empty" class="row">
     <section class="books-layout">
         <app-book
-            *ngFor="let book of books"
+            *ngFor="let book of books$ | async"
             [book]="book"
             (buyItemEvent)="onBuy(book)"
         >

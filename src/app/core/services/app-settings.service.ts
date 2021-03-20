@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { LocalStorageService } from './local-storage.service';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, publish, refCount, retry } from 'rxjs/operators';
+import { LocalStorageService } from './local-storage.service';
 
 export class AppSettingsModel {
     name: string;

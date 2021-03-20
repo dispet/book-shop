@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
-
 import { IBook, IBookToBuy } from '../../shared/models';
 
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable()
 export class CartService {
     cartProduct: Array<IBookToBuy> = [];
     totalQuantity: number;
